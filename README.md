@@ -1,24 +1,40 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column                | Type    | Options     |
+| --------------------- | ------- | ----------- |
+| Nickname              | string  | null: false |
+| email                 | string  | null: false |
+| password              | string  | null: false |
+| password_confirmation | string  | null: false |
+| first_name            | string  | null: false |
+| last_name             | string  | null: false |
+| first_name_ruby       | string  | null: false |
+| last_name_ruby        | string  | null: false |
+| birth_year            | integer | null: false |
+| birth_month           | integer | null: false |
+| birth_day             | integer | null: false |
 
-* Ruby version
+## products テーブル
 
-* System dependencies
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| title       | string     | null: false                    |
+| description | text       | null: false                    |
+| category    | string     | null: false                    |
+| status      | string     | null: false                    |
+| price       | integer    | null: false                    |
+| charge      | string     | null: false                    | 
+| source      | string     | null: false                    |
+| days        | string     | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
-* Configuration
+## comments テーブル
 
-* Database creation
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| text        | text       | null: false                    |
+| user        | references | null: false, foreign_key: true |
+| products    | references | null: false, foreign_key: true |
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

@@ -25,7 +25,7 @@ has_one: purchase
 | prefectures_id    | integer     | null: false                    |
 | municipalities    | string      | null: false                    |
 | address           | string      | null: false                    |
-| building          | string      | null: false                    |
+| building          | string      |                                |
 | phone_number      | string      | null: false                    |
 | purchase          | references  | null: false, foreign_key: true |
 
@@ -38,8 +38,8 @@ belongs_to: product
 | title       | string     | null: false                    |
 | description | text       | null: false                    |
 | price       | integer    | null: false                    |
-| charge_id   | integer    | null: false                   | 
-| days_id     | integer    | null: false                   |
+| charge_id   | integer    | null: false                    | 
+| days_id     | integer    | null: false                    |
 | source_id   | integer    | null: false                    |
 | category_id | integer    | null: false                    |
 | status_id   | integer    | null: false                    |

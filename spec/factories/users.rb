@@ -4,8 +4,8 @@ FactoryBot.define do
       person { Gimei.name }
    end
     nickname { Faker::Name.initials(number: 4) }
-    first_name { "金田" }
-    last_name { "浩太" }
+    first_name { "田中" }
+    last_name { "太郎" }
     first_name_ruby { person.first.katakana}
     last_name_ruby { person.last.katakana}
     birthday { Faker::Date.in_date_period }

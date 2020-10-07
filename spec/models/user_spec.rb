@@ -82,22 +82,36 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password can't be blank")
     end
 
-    it 'passwordが6文字以上であれば登録できること' do
+    it 'passwordは半角数字のみでは登録が出来ないこと' do
       @user.password = '123456'
       @user.password_confirmation = '123456'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is invalid")
+    end
+
+    it 'passwordは半角英字のみでは登録が出来ないこと' do
+      @user.password = 'abcdef'
+      @user.password_confirmation = 'abcdef'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is invalid")
+    end
+
+    it 'passwordが6文字以上であれば登録できること' do
+      @user.password = '123abc'
+      @user.password_confirmation = '123abc'
       expect(@user).to be_valid
     end
 
     it 'passwordが5文字以下であれば登録できないこと' do
-      @user.password = '12345'
-      @user.password_confirmation = '12345'
+      @user.password = '123ab'
+      @user.password_confirmation = '123ab'
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
 
     it 'passwordとpassword_confirmationが不一致では登録できないこと' do
-      @user.password = '123456'
-      @user.password_confirmation = '1234567'
+      @user.password = '123abc'
+      @user.password_confirmation = '123abcd'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
@@ -107,6 +121,12 @@ RSpec.describe User, type: :model do
       another_user = FactoryBot.build(:user, email: @user.email)
       another_user.valid?
       expect(another_user.errors.full_messages).to include('Email has already been taken')
+    end
+
+    it 'emailに@が含まれていない場合、登録が出来ないこと' do
+      @user.email = 'abc'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Email is invalid")
     end
 
   end

@@ -10,4 +10,14 @@ class User < ApplicationRecord
   validates :first_name_ruby, presence: true
   validates :last_name_ruby, presence: true
   validates :birthday, presence: true
+
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/} do
+    validates :last_name
+    validates :first_name
+  end
+
+  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/} do
+    validates :last_name_ruby
+    validates :first_name_ruby
+  end
 end

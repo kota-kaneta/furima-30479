@@ -1,11 +1,17 @@
 FactoryBot.define do
-  # factory :product do
-  # content {Faker::Lorem.sentence}
-  # association :user
-  # association :room
+  factory :product do
+    title { 'sample' }
+    description { '説明' }
+    price { 1000 }
+    charge_id { 2 }
+    day_id { 2 }
+    source_id { 2 }
+    category_id { 2 }
+    status_id { 2 }
+    association :user
 
-  # after(:build) do |item|
-  # item.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
-  # end
-  # end
+    after(:build) do |item|
+      item.image.attach(io: File.open('app/assets/images/camera.png'), filename: 'camera.png')
+    end
+  end
 end

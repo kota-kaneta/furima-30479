@@ -8,13 +8,15 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/i }
 
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/} do
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ } do
     validates :last_name
     validates :first_name
   end
 
-  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/} do
+  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/ } do
     validates :last_name_ruby
     validates :first_name_ruby
   end
+
+  has_many :products
 end

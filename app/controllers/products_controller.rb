@@ -16,11 +16,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def calculation
-    item = Product.find(params[:id])
-    render json: { product: item }
-  end
-
   private
 
   def product_params

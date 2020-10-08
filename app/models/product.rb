@@ -12,5 +12,5 @@ class Product < ApplicationRecord
   validates :title, :description, :price, :charge_id, :day_id, :source_id, :category_id, :status_id, :image, presence: true
   validates :charge_id, :day_id, :source_id, :category_id, :status_id, numericality: { other_than: 1 }
 
-  validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999 }
+  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 }
 end

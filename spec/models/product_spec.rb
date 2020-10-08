@@ -43,13 +43,13 @@ RSpec.describe Product, type: :model do
     it 'priceは300円未満では登録できないこと' do
       @product.price = '200'
       @product.valid?
-      expect(@product.errors.full_messages).to include('Price must be greater than 300')
+      expect(@product.errors.full_messages).to include("Price must be greater than 299")
     end
 
     it 'priceは9999999円以上は登録できないこと' do
-      @product.price = '10000000000000'
+      @product.price = 100000000000
       @product.valid?
-      expect(@product.errors.full_messages).to include('Price must be less than 9999999')
+      expect(@product.errors.full_messages).to include("Price must be less than 10000000")
     end
 
     it 'chrge_idが1（選択なし）では登録できないこと' do

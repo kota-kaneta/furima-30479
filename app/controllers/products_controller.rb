@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:show, :edit, :update]
   def index
     @products = Product.all.order('id DESC')
   end
@@ -18,17 +19,14 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    product = Product.find(params[:id])
-    if product.update(product_params)
-      redirect_to root_path
+    if @product.update(product_params)
+      redirect_to product_path
     else
       render action: :edit
     end
@@ -39,6 +37,11 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:title, :description, :price, :charge_id, :day_id, :source_id, :category_id, :status_id, :image).merge(user_id: current_user.id)
   end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
 end
 
 # .valid?

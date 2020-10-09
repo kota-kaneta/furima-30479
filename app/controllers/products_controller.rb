@@ -32,6 +32,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to root_path
+  end
+
   private
 
   def product_params
@@ -43,5 +49,3 @@ class ProductsController < ApplicationController
   end
 
 end
-
-# .valid?

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
   def index
     @products = Product.all.order('id DESC')
   end
@@ -32,6 +32,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    if @product.destroy
+      redirect_to root_path
+    else
+      render action: :show
+    end
+  end
+
   private
 
   def product_params
@@ -43,5 +51,3 @@ class ProductsController < ApplicationController
   end
 
 end
-
-# .valid?

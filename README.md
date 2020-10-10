@@ -15,7 +15,7 @@
 
 has_many: comments
 has_many: products
-has_one: order
+has_one: purchase
  
 ## Shippings テーブル
 
@@ -30,7 +30,7 @@ has_one: order
 | order             | references  | null: false, foreign_key: true |
 
 belongs_to: product
-has_one: order
+has_one: purchase
 
 ## products テーブル
 
@@ -48,13 +48,13 @@ has_one: order
 
 belongs_to: user
 has_many: comments
-has_one: order
+has_one: purchase
 
-## orders テーブル
+## purchases テーブル
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
-| products    | references | null: false, foreign_key: true |
+| product     | references | null: false, foreign_key: true |
 
 belongs_to: user
 belongs_to: product
@@ -66,7 +66,7 @@ belongs_to: shipping
 | ----------- | ---------- | ------------------------------ |
 | text        | text       | null: false                    |
 | user        | references | null: false, foreign_key: true |
-| products    | references | null: false, foreign_key: true |
+| product    | references | null: false, foreign_key: true |
 
 belongs_to: user
 belongs_to: product

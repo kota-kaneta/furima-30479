@@ -1,13 +1,9 @@
 class PurchasesController < ApplicationController
   before_action :set_product, only: [:index, :create]
+  before_action :set_root, only: [:index, :create]
 
   def index
     authenticate_user!
-    if current_user.id == @product.user_id
-      redirect_to root_path
-    elsif request.referer.nil?
-      redirect_to root_path
-    end
     @purchase = PurchaseShipping.new
   end
 
@@ -30,6 +26,14 @@ class PurchasesController < ApplicationController
 
   def set_product
     @product = Product.find(params[:product_id])
+  end
+
+  def set_root
+    if current_user.id == @product.user_id
+      redirect_to root_path
+    elsif request.referer.nil?
+      redirect_to root_path
+    end
   end
 
   def pay_item

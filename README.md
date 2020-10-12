@@ -27,10 +27,9 @@ has_one: purchase
 | address           | string      | null: false                    |
 | building          | string      |                                |
 | phone_number      | string      | null: false                    |
-| order             | references  | null: false, foreign_key: true |
+| purchase             | references  | null: false, foreign_key: true |
 
 belongs_to: product
-has_one: purchase
 
 ## products テーブル
 
@@ -58,7 +57,6 @@ has_one: purchase
 
 belongs_to: user
 belongs_to: product
-belongs_to: shipping
 
 ## comments テーブル
 

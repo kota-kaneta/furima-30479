@@ -1,5 +1,6 @@
 class Purchase < ApplicationRecord
-  belongs_to :user
-  belongs_to :product
-  belongs_to :shipping
+  attr_accessor :token
+  belongs_to :user, optional: true
+  belongs_to :product, optional: true
+  belongs_to :shipping, optional: true
 end

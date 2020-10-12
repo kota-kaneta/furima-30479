@@ -1,7 +1,7 @@
  function price_cal(){
   const item_price = document.getElementById("item-price")
 
-  item_price.addEventListener('input', function(){
+  item_price.addEventListener('keyup', function(){
     let price = document.getElementById("item-price").value;
     let tax = document.getElementById("add-tax-price");
     let profit = document.getElementById("profit");

@@ -27,7 +27,7 @@ has_one: purchase
 | address           | string      | null: false                    |
 | building          | string      |                                |
 | phone_number      | string      | null: false                    |
-| purchase             | references  | null: false, foreign_key: true |
+| purchase          | references  | null: false, foreign_key: true |
 
 belongs_to: product
 
@@ -64,7 +64,7 @@ belongs_to: product
 | ----------- | ---------- | ------------------------------ |
 | text        | text       | null: false                    |
 | user        | references | null: false, foreign_key: true |
-| product    | references | null: false, foreign_key: true |
+| product     | references | null: false, foreign_key: true |
 
 belongs_to: user
 belongs_to: product
